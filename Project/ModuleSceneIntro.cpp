@@ -20,6 +20,11 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
+	Cube c(5, 5, 5);
+	PhysBody3D* cube = App->physics->AddBody(c);
+	cube->SetPos(0, 2, 25);
+	cube->body->setMassProps(0, { 0,0,0 });
+
 	return ret;
 }
 
@@ -35,13 +40,9 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update(float dt)
 {
 	Plane p(0, 1, 0, 0);
-	Cube c(10, 10, 40);
 
 	p.axis = true;
 	p.Render();
-
-	c.SetPos(10, 0, 10);
-	c.Render();
 
 	return UPDATE_CONTINUE;
 }
