@@ -140,7 +140,17 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
+	vec3 carpos;
+	carpos.x = vehicle->body->getCenterOfMassPosition().getX();
+	carpos.y = vehicle->body->getCenterOfMassPosition().getY() + 5;
+	carpos.z = vehicle->body->getCenterOfMassPosition().getZ() - 10;
+	App->camera->Position = carpos;
 
+	vec3 cardir;
+	cardir.x = vehicle->body->getCenterOfMassPosition().getX();
+	cardir.y = vehicle->body->getCenterOfMassPosition().getY();
+	cardir.z = vehicle->body->getCenterOfMassPosition().getZ();
+	App->camera->LookAt(cardir);
 	vehicle->Render();
 
 	char title[80];

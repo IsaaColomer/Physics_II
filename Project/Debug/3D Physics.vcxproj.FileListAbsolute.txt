@@ -1,2 +1,4 @@
 C:\Users\Usuario\Documents\GitHub\Physics_II\Project\Debug\3D Physics - class5.exe
 C:\Users\Usuario\Documents\GitHub\Physics_II\Project\Debug\3D Physics - class5.pdb
+C:\Users\Bob\Documents\GitHub\Physics_II\Project\Debug\3D Physics - class5.exe
+C:\Users\Bob\Documents\GitHub\Physics_II\Project\Debug\3D Physics - class5.pdb
