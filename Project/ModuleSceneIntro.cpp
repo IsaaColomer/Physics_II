@@ -20,10 +20,22 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	Cube c(5, 5, 5);
-	PhysBody3D* cube = App->physics->AddBody(c);
-	cube->SetPos(0, 2, 25);
+	Cube c1(5, 5, 50);
+	Cube c2(5, 5, 50);
+	Cube c3(50, 5, 5);
+
+	PhysBody3D* cube = App->physics->AddBody(c1);
+	PhysBody3D* cube2 = App->physics->AddBody(c2);
+	PhysBody3D* cube3 = App->physics->AddBody(c3);
+
+	cube->SetPos(-5, 2, 50);
 	cube->body->setMassProps(0, { 0,0,0 });
+
+	cube2->SetPos(5, 2, 50);
+	cube2->body->setMassProps(0, { 0,0,0 });
+
+	cube3->SetPos(50, 2, 5);
+	cube3->body->setMassProps(0, { 0,0,0 });
 
 	return ret;
 }
