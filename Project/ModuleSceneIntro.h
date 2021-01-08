@@ -39,6 +39,12 @@ public:
 	PhysBody3D* pb_wheel2;
 	Cylinder p_wheel2;
 
+	PhysBody3D* cube;
+
+	PhysBody3D* cube2;
+
+	PhysBody3D* cube3;
+
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
 };

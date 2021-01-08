@@ -20,23 +20,20 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	Cube c1(5, 5, 50);
-	Cube c2(5, 5, 50);
-	Cube c3(50, 5, 5);
-
-	PhysBody3D* cube = App->physics->AddBody(c1);
-	PhysBody3D* cube2 = App->physics->AddBody(c2);
-	PhysBody3D* cube3 = App->physics->AddBody(c3);
-
-	cube->SetPos(-5, 2, 50);
+	Cube c1(20,5,100);
+	Cube c2(10,5,100);
+	Cube c3(5,5,100);
+	
+	cube = App->physics->AddBody(c1);
+	cube2 = App->physics->AddBody(c2);
+	cube3 = App->physics->AddBody(c3);
+	cube->SetPos(0, 0, 0);
+	cube2->SetPos(0, 0, 100);
+	cube3->SetPos(0, 0, 200);
 	cube->body->setMassProps(0, { 0,0,0 });
-
-	cube2->SetPos(5, 2, 50);
 	cube2->body->setMassProps(0, { 0,0,0 });
-
-	cube3->SetPos(50, 2, 5);
 	cube3->body->setMassProps(0, { 0,0,0 });
-
+	
 	return ret;
 }
 
@@ -52,10 +49,26 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update(float dt)
 {
 	Plane p(0, 1, 0, 0);
+	Cube cube_road(20,5,100);
+	Cube cube_road2(10,5,100);
+	Cube cube_road3(5,5,100);
 
 	p.axis = true;
 	p.Render();
+	
+	cube_road.wire = false;
+	cube_road.color = Blue;
+	cube_road.Render();
 
+	cube_road2.wire = false;
+	cube_road2.SetPos(0,0,100);
+	cube_road2.color = Red;
+	cube_road2.Render();
+
+	cube_road3.wire = false;
+	cube_road3.SetPos(0, 0, 200);
+	cube_road3.color = Green;
+	cube_road3.Render();
 	return UPDATE_CONTINUE;
 }
 
