@@ -89,6 +89,13 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube_road5.color = Blue;
 	cube_road5.Render();
 
+
+	myCurva pa(0, 0, 0, 10, 5, 180);
+	pa.wire = false;
+	pa.color = White;
+	pa.SetPos(50, 0, 50);
+	pa.Render();
+
 	return UPDATE_CONTINUE;
 }
 

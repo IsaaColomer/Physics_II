@@ -275,3 +275,55 @@ void Plane::InnerRender() const
 
 	glEnd();
 }
+
+
+// MYCURVA ============================================
+myCurva::myCurva() : Primitive()
+{
+	type = PrimitiveTypes::Primitive_Curva;
+}
+
+myCurva::myCurva(float x, float y, float z, float _radius, float _width, float _angle) : Primitive()
+{
+	type = PrimitiveTypes::Primitive_Curva;
+	center = { x,y,z };
+	radius = _radius;
+	angle = _angle;
+	width = _width;
+}
+
+void myCurva::InnerRender() const
+{
+	int n = 30;
+
+	// Cylinder Bottom
+	glBegin(GL_POLYGON);
+
+	for (int i = 360; i >= angle; i -= (360 / n))
+	{
+		float a = i * M_PI / 180; // degrees to radians
+		glVertex3f(-width * 0.5f, radius * cos(a), radius * sin(a));
+	}
+	glEnd();
+
+	// Cylinder Top
+	glBegin(GL_POLYGON);
+	glNormal3f(0.0f, 0.0f, 1.0f);
+	for (int i = 0; i <= angle; i += (360 / n))
+	{
+		float a = i * M_PI / 180; // degrees to radians
+		glVertex3f(width * 0.5f, radius * cos(a), radius * sin(a));
+	}
+	glEnd();
+
+	// Cylinder "Cover"
+	glBegin(GL_QUAD_STRIP);
+	for (int i = 0; i < 480; i += (360 / n))
+	{
+		float a = i * M_PI / 180; // degrees to radians
+
+		glVertex3f(width * 0.5f, radius * cos(a), radius * sin(a));
+		glVertex3f(-width * 0.5f, radius * cos(a), radius * sin(a));
+	}
+	glEnd();
+}

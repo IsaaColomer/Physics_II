@@ -10,7 +10,8 @@ enum PrimitiveTypes
 	Primitive_Plane,
 	Primitive_Cube,
 	Primitive_Sphere,
-	Primitive_Cylinder
+	Primitive_Cylinder,
+	Primitive_Curva
 };
 
 class Primitive
@@ -92,4 +93,18 @@ public:
 public:
 	vec3 normal;
 	float constant;
+};
+
+// ============================================
+class myCurva :public Primitive
+{
+public:
+	myCurva();
+	myCurva(float x, float y, float z,float w, float r, float a);
+	void InnerRender() const;
+public:
+	vec3 center;
+	float width;
+	float radius;
+	float angle;
 };
