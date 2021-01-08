@@ -23,17 +23,23 @@ bool ModuleSceneIntro::Start()
 	Cube c1(20,5,100);
 	Cube c2(10,5,100);
 	Cube c3(5,5,100);
+	Cube c4(100,5,10);
+	Cube c5(10, 10, 20);
+
+	c5.SetRotation(-15, { 1,0,0 });
 	
-	cube = App->physics->AddBody(c1);
-	cube2 = App->physics->AddBody(c2);
-	cube3 = App->physics->AddBody(c3);
+	cube = App->physics->AddBody(c1,0);
+	cube2 = App->physics->AddBody(c2,0);
+	cube3 = App->physics->AddBody(c3,0);
+	cube4 = App->physics->AddBody(c4,0);
+	cube5 = App->physics->AddBody(c5,0);
+
 	cube->SetPos(0, 0, 0);
 	cube2->SetPos(0, 0, 100);
 	cube3->SetPos(0, 0, 200);
-	cube->body->setMassProps(0, { 0,0,0 });
-	cube2->body->setMassProps(0, { 0,0,0 });
-	cube3->body->setMassProps(0, { 0,0,0 });
-	
+	cube4->SetPos(-50, 0, 200);
+	cube5->SetPos(0, 0, 100);
+
 	return ret;
 }
 
@@ -52,6 +58,8 @@ update_status ModuleSceneIntro::Update(float dt)
 	Cube cube_road(20,5,100);
 	Cube cube_road2(10,5,100);
 	Cube cube_road3(5,5,100);
+	Cube cube_road4(100, 5, 10);
+	Cube cube_road5(10, 10, 20);
 
 	p.axis = true;
 	p.Render();
@@ -69,6 +77,18 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube_road3.SetPos(0, 0, 200);
 	cube_road3.color = Green;
 	cube_road3.Render();
+
+	cube_road4.wire = false;
+	cube_road4.SetPos(-50, 0, 200);
+	cube_road4.color = Green;
+	cube_road4.Render();
+
+	cube_road5.wire = false;
+	cube_road5.SetPos(0, 0, 100);
+	cube_road5.SetRotation(-15, { 1,0,0 });
+	cube_road5.color = Blue;
+	cube_road5.Render();
+
 	return UPDATE_CONTINUE;
 }
 

@@ -45,6 +45,10 @@ public:
 
 	PhysBody3D* cube3;
 
+	PhysBody3D* cube4;
+
+	PhysBody3D* cube5;
+
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
 };
